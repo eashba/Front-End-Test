@@ -8,9 +8,14 @@ const formatDate = (dateString) => {
     const month = monthNames[dateObj.getMonth()];
     const day = String(dateObj.getDate()).padStart(2, '0');
     const year = dateObj.getFullYear();
-    const hours = dateObj.getHours();
-    const minutes = dateObj.getMinutes();
-    return `${month} ${day}, ${year} - ${hours}:${minutes}`;
+
+    const hour12Format = dateObj.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    return `${month} ${day}, ${year} - ${hour12Format} `;
 }
 
 function OrdersTable({ data, actions }) {
