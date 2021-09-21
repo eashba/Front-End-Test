@@ -23,7 +23,9 @@ For a larger project I would probably utilize a library like Moment.js, because 
 There seems to be an issue with total price sometimes. On some order details, the total price is displaying values after the penny.
 
 ### Dev Notes / Response
+Prices are stored as integers (x100 of the 'cost'). To display the proper price, division by 100 is required. The component originally would divide each value by 100 before adding, which means it is adding many decimals together and potentially running into floating-point issues.
 
+We can avoid this can sum everything as its integer value, and then divide the final integer total by 100 to get it into our desired format.
 
 ---
 
