@@ -17,10 +17,7 @@ function DeleteOrder({ data, actions }) {
                 <button
                     type="button"
                     className="detailButton"
-                    onClick={() => {
-                        clearSelected() //TODO: Change to handleClick
-                        deleteOrder()
-                    }}
+                    onClick={() => handleClick()}
                 >
                     I changed my mind!
                 </button>
