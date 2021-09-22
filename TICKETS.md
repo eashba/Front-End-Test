@@ -35,7 +35,7 @@ We can avoid this can sum everything as its integer value, and then divide the f
 I'm currently unable to delete a customer order. Every time I click the "Delete" button from the Customer Orders table, I get a white screen.
 
 ### Dev Notes / Response
-
+In DeleteOrder component, onclick on delete button was invoking confirmDelete() on render time, when it should have been providing a method that will call confirmDelete()
 
 ---
 
