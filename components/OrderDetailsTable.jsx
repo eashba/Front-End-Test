@@ -5,7 +5,7 @@ function OrderDetailsTable({ data, actions }) {
     const { customerName, items } = data;
     const { clearSelected } = actions;
     const totalQuantity = items.reduce((total, item) => total += item.quantity, 0);
-    const totalPrice = items.reduce((total, item) => total += (item.price/100), 0);
+    const totalPrice = items.reduce((total, item) => total += (item.price), 0) / 100;
 
     return (
         <div>

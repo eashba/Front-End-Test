@@ -12,9 +12,14 @@ const formatDate = (dateString) => {
     const month = monthNames[dateObj.getMonth()];
     const day = String(dateObj.getDate()).padStart(2, '0');
     const year = dateObj.getFullYear();
-    const hours = dateObj.getHours();
-    const minutes = dateObj.getMinutes();
-    return `${month} ${day}, ${year} - ${hours}:${minutes}`;
+
+    const hour12Format = dateObj.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    return `${month} ${day}, ${year} - ${hour12Format} `;
 }
 
 export class Orders extends Component {
@@ -30,7 +35,7 @@ export class Orders extends Component {
 
     selectOrder = order => this.setState({ selectedOrder: order });
     clearSelected = () => this.setState({ selectedOrder: {} });
-    deleteOrder = () => this.setState(({ displayDelete }) => ({ displayDelete: !displayDelete }));
+    deleteOrder = () => this.setState(({ displayDelete }) => ({ displayDelete: !displayDelete })); //Toggles
     confirmDelete = () => {
         const { orders, selectedOrder } = this.state;
         const updated = orders.filter(({ id }) => id !== selectedOrder.id);
@@ -49,7 +54,8 @@ export class Orders extends Component {
         const orderSelected = Object.keys(selectedOrder).length > 0
         const ordersActions = {
             selectOrder: this.selectOrder,
-            deleteOrder: this.deleteOrder
+            deleteOrder: this.deleteOrder,
+            formatDate: formatDate
         };
         const detailsActions = {
             clearSelected: this.clearSelected

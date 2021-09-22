@@ -17,17 +17,14 @@ function DeleteOrder({ data, actions }) {
                 <button
                     type="button"
                     className="detailButton"
-                    onClick={() => {
-                        clearSelected()
-                        deleteOrder()
-                    }}
+                    onClick={() => handleClick()}
                 >
                     I changed my mind!
                 </button>
                 <button
                     type="button" 
                     className="deleteButton"
-                    onClick={confirmDelete()}
+                    onClick={() => confirmDelete()}
                 >
                     Trash it!
                 </button>
